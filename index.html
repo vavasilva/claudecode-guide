@@ -1,0 +1,1701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Code Guide | Master the CLI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navigation Menu -->
+  <nav class="nav-menu" id="navMenu">
+    <div class="nav-header">
+      <span class="nav-logo">CC</span>
+      <span class="nav-title">Guide</span>
+      <button class="nav-close" id="navClose" aria-label="Close menu">×</button>
+    </div>
+    <ul class="nav-list">
+      <li class="nav-section-title">Core Features</li>
+      <li><a href="#ultrathink" class="nav-link">🧠 Ultrathink</a></li>
+      <li><a href="#claudemd" class="nav-link">📄 CLAUDE.md</a></li>
+      <li><a href="#mentions" class="nav-link">@ Mentions</a></li>
+      <li><a href="#slash-commands" class="nav-link">⚡ Slash Commands</a></li>
+      <li><a href="#custom-commands" class="nav-link">🔧 Custom Commands</a></li>
+
+      <li class="nav-section-title">Usage</li>
+      <li><a href="#keyboard-shortcuts" class="nav-link">⌨️ Keyboard Shortcuts</a></li>
+      <li><a href="#model-switching" class="nav-link">🔀 Model Switching</a></li>
+      <li><a href="#image-support" class="nav-link">🖼️ Image Support</a></li>
+      <li><a href="#vim-mode" class="nav-link">📝 Vim Mode</a></li>
+
+      <li class="nav-section-title">Integration</li>
+      <li><a href="#mcp-servers" class="nav-link">🔌 MCP Servers</a></li>
+      <li><a href="#hooks" class="nav-link">🪝 Hooks</a></li>
+      <li><a href="#git-integration" class="nav-link">🌿 Git Integration</a></li>
+      <li><a href="#ide-integrations" class="nav-link">💻 IDE Integration</a></li>
+      <li><a href="#headless-mode" class="nav-link">🤖 Headless Mode</a></li>
+      <li><a href="#background-tasks" class="nav-link">⏳ Background Tasks</a></li>
+
+      <li class="nav-section-title">Configuration</li>
+      <li><a href="#configuration" class="nav-link">⚙️ Configuration</a></li>
+      <li><a href="#permissions" class="nav-link">🔒 Permissions</a></li>
+      <li><a href="#session-resume" class="nav-link">🔄 Session Resume</a></li>
+
+      <li class="nav-section-title">Reference</li>
+      <li><a href="#costs-performance" class="nav-link">💰 Costs & Performance</a></li>
+      <li><a href="#best-practices" class="nav-link">✅ Best Practices</a></li>
+      <li><a href="#common-errors" class="nav-link">🐛 Troubleshooting</a></li>
+    </ul>
+  </nav>
+
+  <!-- Menu Toggle Button -->
+  <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="3" y1="12" x2="21" y2="12"/>
+      <line x1="3" y1="6" x2="21" y2="6"/>
+      <line x1="3" y1="18" x2="21" y2="18"/>
+    </svg>
+  </button>
+
+  <!-- Search Toggle Button -->
+  <button class="search-toggle" id="searchToggle" aria-label="Toggle search">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="8"/>
+      <path d="m21 21-4.3-4.3"/>
+    </svg>
+  </button>
+
+  <!-- Search Container -->
+  <div class="search-container" id="searchContainer">
+    <div class="search-wrapper">
+      <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/>
+        <path d="m21 21-4.3-4.3"/>
+      </svg>
+      <input
+        type="text"
+        class="search-input"
+        id="searchInput"
+        placeholder="Search tips, commands, features..."
+        autocomplete="off"
+      >
+      <div class="search-shortcut">
+        <span class="shortcut-key">⌘</span>
+        <span class="shortcut-key">K</span>
+      </div>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">
+        <span></span>
+        Claude Code CLI Tips & Tricks
+      </div>
+      <h1>Claude Code <span>Guide</span></h1>
+      <p class="hero-subtitle">
+        Unlock the full power of Claude Code CLI with expert tips, hidden features, and productivity hacks.
+      </p>
+      <div class="hero-terminal">
+        <div class="terminal-header">
+          <div class="terminal-dot"></div>
+          <div class="terminal-dot"></div>
+          <div class="terminal-dot"></div>
+        </div>
+        <div class="terminal-body">
+          <div class="terminal-line">
+            <span class="terminal-prompt">$</span>
+            <span class="terminal-command">claude</span>
+          </div>
+          <div class="terminal-line">
+            <span class="terminal-prompt">›</span>
+            <span class="terminal-command">ultrathink - How to scale this architecture?</span>
+            <span class="terminal-cursor"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Accordion Sections -->
+  <div class="accordion-container">
+    <div class="container">
+
+      <!-- Ultrathink -->
+      <div class="accordion active" id="ultrathink" data-searchable>
+        <div class="accordion-header">
+          <div class="accordion-icon">🧠</div>
+          <div class="accordion-title-group">
+            <div class="accordion-title">Ultrathink</div>
+            <div class="accordion-subtitle">Unlock maximum thinking power with magic words</div>
+          </div>
+          <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p class="feature-text">
+              A "magic word" that activates the maximum thinking budget in Claude Code.
+              When you need Claude to reason deeply about complex problems, ultrathink
+              unlocks extended thinking with up to 31,999 tokens of internal reasoning.
+            </p>
+
+            <div class="hierarchy-section">
+              <h3 class="hierarchy-title">Thinking Hierarchy</h3>
+              <table class="hierarchy-table">
+                <thead>
+                  <tr>
+                    <th>Command</th>
+                    <th>Thinking Tokens</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="command-tag">think</span></td>
+                    <td>
+                      <div class="tokens-bar">
+                        <div class="tokens-fill" style="width: 40px;"></div>
+                        <span class="tokens-value">~4,000 tokens</span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag">think hard</span> / <span class="command-tag">megathink</span></td>
+                    <td>
+                      <div class="tokens-bar">
+                        <div class="tokens-fill" style="width: 100px;"></div>
+                        <span class="tokens-value">~10,000 tokens</span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag">think harder</span> / <span class="command-tag">ultrathink</span></td>
+                    <td>
+                      <div class="tokens-bar">
+                        <div class="tokens-fill" style="width: 200px;"></div>
+                        <span class="tokens-value">~31,999 tokens (max)</span>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="code-block" data-label="EXAMPLE">
+              <span class="code-keyword">ultrathink</span> - How to refactor this microservices architecture to scale 100x?
+            </div>
+
+            <div class="usage-grid">
+              <div class="usage-card positive">
+                <div class="usage-card-header">
+                  <div class="usage-icon">✓</div>
+                  When to Use
+                </div>
+                <ul class="usage-list">
+                  <li>Complex architectural decisions</li>
+                  <li>Debugging difficult problems</li>
+                  <li>Multi-step problem solving</li>
+                </ul>
+              </div>
+              <div class="usage-card negative">
+                <div class="usage-card-header">
+                  <div class="usage-icon">✗</div>
+                  When to Avoid
+                </div>
+                <ul class="usage-list">
+                  <li>Simple questions or tasks</li>
+                  <li>Quick code generation</li>
+                  <li>Token budget is limited</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="info-box">
+              <div class="info-box-title">⚠️ Limitations</div>
+              <div class="info-box-content">
+                Only works in Claude Code CLI (terminal). If <code>MAX_THINKING_TOKENS</code> is configured, it takes precedence over magic words.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CLAUDE.md -->
+      <div class="accordion" id="claudemd" data-searchable>
+        <div class="accordion-header">
+          <div class="accordion-icon">📄</div>
+          <div class="accordion-title-group">
+            <div class="accordion-title">CLAUDE.md</div>
+            <div class="accordion-subtitle">Custom instructions for your projects</div>
+          </div>
+          <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p class="feature-text">
+              CLAUDE.md is a special markdown file that Claude Code reads automatically to understand your project context, coding standards, and preferences.
+            </p>
+
+            <div class="hierarchy-section">
+              <h3 class="hierarchy-title">File Locations</h3>
+              <table class="hierarchy-table">
+                <thead>
+                  <tr>
+                    <th>Location</th>
+                    <th>Scope</th>
+                    <th>Priority</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="command-tag purple">~/.claude/CLAUDE.md</span></td>
+                    <td>Global (all projects)</td>
+                    <td>Lowest</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag purple">.claude/CLAUDE.md</span></td>
+                    <td>Project-specific</td>
+                    <td>Highest</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag purple">CLAUDE.md</span></td>
+                    <td>Project root</td>
+                    <td>Medium</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="code-block" data-label="EXAMPLE">
+<span class="code-comment"># Project: My App</span>
+
+<span class="code-comment">## Tech Stack</span>
+- TypeScript, React 18, Vite
+- TailwindCSS for styling
+- Vitest for testing
+
+<span class="code-comment">## Coding Standards</span>
+- Use functional components
+- Prefer named exports
+- Always add JSDoc comments
+            </div>
+
+            <ul class="tip-list">
+              <li><span class="tip-icon">💡</span> Include project architecture, tech stack, and coding conventions</li>
+              <li><span class="tip-icon">💡</span> Add common commands like build, test, and lint</li>
+              <li><span class="tip-icon">💡</span> Document file structure and naming patterns</li>
+              <li><span class="tip-icon">💡</span> Use <span class="command-tag">/init</span> to generate a starter CLAUDE.md</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slash Commands -->
+      <div class="accordion" id="slash-commands" data-searchable>
+        <div class="accordion-header">
+          <div class="accordion-icon">⚡</div>
+          <div class="accordion-title-group">
+            <div class="accordion-title">Slash Commands</div>
+            <div class="accordion-subtitle">Quick actions with / prefix</div>
+          </div>
+          <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p class="feature-text">
+              Slash commands provide quick access to common actions and settings. Type <code>/</code> to see all available commands.
+            </p>
+
+            <div class="hierarchy-section">
+              <h3 class="hierarchy-title">Essential Commands</h3>
+              <table class="hierarchy-table">
+                <thead>
+                  <tr>
+                    <th>Command</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="command-tag">/compact</span></td>
+                    <td>Compress conversation context to save tokens</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag">/cost</span></td>
+                    <td>Show token usage and estimated cost</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag">/clear</span></td>
+                    <td>Clear conversation history</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag">/init</span></td>
+                    <td>Generate CLAUDE.md for your project</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag">/doctor</span></td>
+                    <td>Diagnose configuration issues</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag">/config</span></td>
+                    <td>Open configuration settings</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag">/help</span></td>
+                    <td>Show help and available commands</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag">/review</span></td>
+                    <td>Review code changes or PR</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag">/bug</span></td>
+                    <td>Report a bug to Anthropic</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="info-box">
+              <div class="info-box-title">💡 Pro Tip</div>
+              <div class="info-box-content">
+                Use <code>/compact</code> regularly in long sessions to reduce token usage and keep responses fast. It summarizes the conversation while preserving important context.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Keyboard Shortcuts -->
+      <div class="accordion" id="keyboard-shortcuts" data-searchable>
+        <div class="accordion-header">
+          <div class="accordion-icon">⌨️</div>
+          <div class="accordion-title-group">
+            <div class="accordion-title">Keyboard Shortcuts</div>
+            <div class="accordion-subtitle">Speed up your workflow</div>
+          </div>
+          <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p class="feature-text">
+              Master these keyboard shortcuts to navigate Claude Code like a pro.
+            </p>
+
+            <div class="hierarchy-section">
+              <h3 class="hierarchy-title">Essential Shortcuts</h3>
+              <table class="hierarchy-table">
+                <thead>
+                  <tr>
+                    <th>Shortcut</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="command-tag orange">Esc</span></td>
+                    <td>Interrupt current generation</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag orange">Ctrl + C</span></td>
+                    <td>Cancel operation / Exit</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag orange">Ctrl + D</span></td>
+                    <td>Exit Claude Code</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag orange">Ctrl + L</span></td>
+                    <td>Clear terminal screen</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag orange">↑ / ↓</span></td>
+                    <td>Navigate command history</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag orange">Tab</span></td>
+                    <td>Autocomplete file paths</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag orange">Shift + Enter</span></td>
+                    <td>Multi-line input</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="usage-grid">
+              <div class="usage-card positive">
+                <div class="usage-card-header">
+                  <div class="usage-icon">⚡</div>
+                  Quick Actions
+                </div>
+                <ul class="usage-list">
+                  <li><strong>Esc</strong> to stop a long response</li>
+                  <li><strong>↑</strong> to repeat last command</li>
+                  <li><strong>Tab</strong> for file autocomplete</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Model Switching -->
+      <div class="accordion" id="model-switching" data-searchable>
+        <div class="accordion-header">
+          <div class="accordion-icon">🔄</div>
+          <div class="accordion-title-group">
+            <div class="accordion-title">Model Switching</div>
+            <div class="accordion-subtitle">Choose between Sonnet, Opus, and Haiku</div>
+          </div>
+          <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p class="feature-text">
+              Claude Code supports different models optimized for different use cases. Choose based on your needs for speed, cost, or capability.
+            </p>
+
+            <div class="hierarchy-section">
+              <h3 class="hierarchy-title">Available Models</h3>
+              <table class="hierarchy-table">
+                <thead>
+                  <tr>
+                    <th>Model</th>
+                    <th>Best For</th>
+                    <th>Speed</th>
+                    <th>Cost</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="command-tag green">Haiku</span></td>
+                    <td>Quick tasks, simple edits</td>
+                    <td>⚡⚡⚡ Fastest</td>
+                    <td>💰 Lowest</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag">Sonnet</span></td>
+                    <td>Balanced (default)</td>
+                    <td>⚡⚡ Fast</td>
+                    <td>💰💰 Medium</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag purple">Opus</span></td>
+                    <td>Complex reasoning, architecture</td>
+                    <td>⚡ Slower</td>
+                    <td>💰💰💰 Highest</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="code-block" data-label="CLI FLAG">
+<span class="code-comment"># Start with a specific model</span>
+claude <span class="code-flag">--model</span> <span class="code-string">opus</span>
+claude <span class="code-flag">--model</span> <span class="code-string">haiku</span>
+            </div>
+
+            <ul class="tip-list">
+              <li><span class="tip-icon">💡</span> Use <strong>Haiku</strong> for quick file edits and simple questions</li>
+              <li><span class="tip-icon">💡</span> Use <strong>Sonnet</strong> (default) for most coding tasks</li>
+              <li><span class="tip-icon">💡</span> Use <strong>Opus</strong> for complex architecture and deep analysis</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hooks -->
+      <div class="accordion" id="hooks" data-searchable>
+        <div class="accordion-header">
+          <div class="accordion-icon">🪝</div>
+          <div class="accordion-title-group">
+            <div class="accordion-title">Hooks</div>
+            <div class="accordion-subtitle">Automate actions before/after commands</div>
+          </div>
+          <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p class="feature-text">
+              Hooks let you run custom scripts automatically when Claude Code performs certain actions. Perfect for linting, testing, or custom workflows.
+            </p>
+
+            <div class="hierarchy-section">
+              <h3 class="hierarchy-title">Hook Types</h3>
+              <table class="hierarchy-table">
+                <thead>
+                  <tr>
+                    <th>Hook</th>
+                    <th>Trigger</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="command-tag yellow">PreToolUse</span></td>
+                    <td>Before a tool executes</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag yellow">PostToolUse</span></td>
+                    <td>After a tool completes</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag yellow">Notification</span></td>
+                    <td>When Claude wants your attention</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag yellow">Stop</span></td>
+                    <td>When Claude finishes a response</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="code-block" data-label="SETTINGS.JSON">
+{
+  <span class="code-string">"hooks"</span>: {
+    <span class="code-string">"PostToolUse"</span>: [
+      {
+        <span class="code-string">"matcher"</span>: <span class="code-string">"Write"</span>,
+        <span class="code-string">"command"</span>: <span class="code-string">"npm run lint:fix $FILE"</span>
+      }
+    ]
+  }
+}
+            </div>
+
+            <ul class="tip-list">
+              <li><span class="tip-icon">💡</span> Auto-format code after every file write</li>
+              <li><span class="tip-icon">💡</span> Run tests after code changes</li>
+              <li><span class="tip-icon">💡</span> Send notifications when tasks complete</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- MCP Servers -->
+      <div class="accordion" id="mcp-servers" data-searchable>
+        <div class="accordion-header">
+          <div class="accordion-icon">🔌</div>
+          <div class="accordion-title-group">
+            <div class="accordion-title">MCP Servers</div>
+            <div class="accordion-subtitle">Extend Claude with external tools</div>
+          </div>
+          <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p class="feature-text">
+              Model Context Protocol (MCP) servers allow Claude Code to interact with external tools, databases, and APIs. Connect to GitHub, databases, or custom services.
+            </p>
+
+            <div class="hierarchy-section">
+              <h3 class="hierarchy-title">Popular MCP Servers</h3>
+              <table class="hierarchy-table">
+                <thead>
+                  <tr>
+                    <th>Server</th>
+                    <th>Capabilities</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="command-tag">GitHub</span></td>
+                    <td>Issues, PRs, repos, actions</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag">PostgreSQL</span></td>
+                    <td>Query databases directly</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag">Filesystem</span></td>
+                    <td>Extended file operations</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag">Slack</span></td>
+                    <td>Send messages, read channels</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag">Puppeteer</span></td>
+                    <td>Browser automation</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="code-block" data-label="SETTINGS.JSON">
+{
+  <span class="code-string">"mcpServers"</span>: {
+    <span class="code-string">"github"</span>: {
+      <span class="code-string">"command"</span>: <span class="code-string">"npx"</span>,
+      <span class="code-string">"args"</span>: [<span class="code-string">"-y"</span>, <span class="code-string">"@modelcontextprotocol/server-github"</span>],
+      <span class="code-string">"env"</span>: {
+        <span class="code-string">"GITHUB_TOKEN"</span>: <span class="code-string">"your-token"</span>
+      }
+    }
+  }
+}
+            </div>
+
+            <div class="info-box">
+              <div class="info-box-title">📚 Learn More</div>
+              <div class="info-box-content">
+                Find more MCP servers at <code>github.com/modelcontextprotocol/servers</code>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Headless Mode -->
+      <div class="accordion" id="headless-mode" data-searchable>
+        <div class="accordion-header">
+          <div class="accordion-icon">🤖</div>
+          <div class="accordion-title-group">
+            <div class="accordion-title">Headless Mode</div>
+            <div class="accordion-subtitle">Non-interactive scripting and automation</div>
+          </div>
+          <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p class="feature-text">
+              Run Claude Code in headless mode for scripting, CI/CD pipelines, and automation. No interactive prompts needed.
+            </p>
+
+            <div class="code-block" data-label="BASIC USAGE">
+<span class="code-comment"># Single prompt</span>
+claude <span class="code-flag">-p</span> <span class="code-string">"Explain this function"</span> < file.js
+
+<span class="code-comment"># With file input</span>
+cat code.py | claude <span class="code-flag">-p</span> <span class="code-string">"Find bugs in this code"</span>
+
+<span class="code-comment"># Output to file</span>
+claude <span class="code-flag">-p</span> <span class="code-string">"Generate tests"</span> > tests.js
+            </div>
+
+            <div class="code-block" data-label="CI/CD EXAMPLE">
+<span class="code-comment"># GitHub Actions</span>
+- name: Code Review
+  run: |
+    claude <span class="code-flag">-p</span> <span class="code-string">"Review changes for security issues"</span> \
+      < <span class="code-keyword">$(git diff HEAD~1)</span>
+            </div>
+
+            <div class="usage-grid">
+              <div class="usage-card positive">
+                <div class="usage-card-header">
+                  <div class="usage-icon">🚀</div>
+                  Use Cases
+                </div>
+                <ul class="usage-list">
+                  <li>Automated code review in CI</li>
+                  <li>Generate changelogs</li>
+                  <li>Batch file processing</li>
+                  <li>Documentation generation</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Git Integration -->
+      <div class="accordion" id="git-integration" data-searchable>
+        <div class="accordion-header">
+          <div class="accordion-icon">🔀</div>
+          <div class="accordion-title-group">
+            <div class="accordion-title">Git Integration</div>
+            <div class="accordion-subtitle">Smart commits, PRs, and reviews</div>
+          </div>
+          <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p class="feature-text">
+              Claude Code integrates seamlessly with Git for intelligent commits, PR reviews, and version control workflows.
+            </p>
+
+            <div class="hierarchy-section">
+              <h3 class="hierarchy-title">Git Features</h3>
+              <table class="hierarchy-table">
+                <thead>
+                  <tr>
+                    <th>Feature</th>
+                    <th>How to Use</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="command-tag green">Smart Commits</span></td>
+                    <td>Ask Claude to commit with a meaningful message</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag green">PR Review</span></td>
+                    <td><code>/review</code> or ask to review changes</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag green">Diff Analysis</span></td>
+                    <td>Paste diff or ask about changes</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag green">Conflict Resolution</span></td>
+                    <td>Ask Claude to resolve merge conflicts</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="code-block" data-label="EXAMPLES">
+<span class="code-comment"># Ask Claude to commit</span>
+> Commit these changes with a good message
+
+<span class="code-comment"># Review a PR</span>
+> /review
+
+<span class="code-comment"># Analyze changes</span>
+> What changed in the last 5 commits?
+            </div>
+
+            <div class="info-box">
+              <div class="info-box-title">⚠️ Safety</div>
+              <div class="info-box-content">
+                Claude never pushes to remote without explicit permission. Always review commits before pushing.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Costs & Performance -->
+      <div class="accordion" id="costs-performance" data-searchable>
+        <div class="accordion-header">
+          <div class="accordion-icon">💰</div>
+          <div class="accordion-title-group">
+            <div class="accordion-title">Costs & Performance</div>
+            <div class="accordion-subtitle">Monitor and optimize token usage</div>
+          </div>
+          <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p class="feature-text">
+              Keep track of your token usage and costs, and learn how to optimize for efficiency.
+            </p>
+
+            <div class="hierarchy-section">
+              <h3 class="hierarchy-title">Cost Optimization Tips</h3>
+              <table class="hierarchy-table">
+                <thead>
+                  <tr>
+                    <th>Strategy</th>
+                    <th>Impact</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="command-tag">/compact</span> regularly</td>
+                    <td>Reduces context size by 50-80%</td>
+                  </tr>
+                  <tr>
+                    <td>Use <span class="command-tag green">Haiku</span> for simple tasks</td>
+                    <td>10x cheaper than Opus</td>
+                  </tr>
+                  <tr>
+                    <td>Clear with <span class="command-tag">/clear</span></td>
+                    <td>Start fresh, no accumulated tokens</td>
+                  </tr>
+                  <tr>
+                    <td>Be specific in prompts</td>
+                    <td>Fewer back-and-forth exchanges</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="code-block" data-label="CHECK COSTS">
+<span class="code-comment"># View current session costs</span>
+> /cost
+
+<span class="code-comment"># Compact to reduce context</span>
+> /compact
+            </div>
+
+            <div class="info-box">
+              <div class="info-box-title">📊 Token Pricing (approximate)</div>
+              <div class="info-box-content">
+                <strong>Haiku:</strong> ~$0.25/1M input, $1.25/1M output<br>
+                <strong>Sonnet:</strong> ~$3/1M input, $15/1M output<br>
+                <strong>Opus:</strong> ~$15/1M input, $75/1M output
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- IDE Integrations -->
+      <div class="accordion" id="ide-integrations" data-searchable>
+        <div class="accordion-header">
+          <div class="accordion-icon">💻</div>
+          <div class="accordion-title-group">
+            <div class="accordion-title">IDE Integrations</div>
+            <div class="accordion-subtitle">VS Code, JetBrains, Vim, and more</div>
+          </div>
+          <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p class="feature-text">
+              Claude Code works in your terminal, but also integrates with popular IDEs for an enhanced experience.
+            </p>
+
+            <div class="hierarchy-section">
+              <h3 class="hierarchy-title">Supported IDEs</h3>
+              <table class="hierarchy-table">
+                <thead>
+                  <tr>
+                    <th>IDE</th>
+                    <th>Integration</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="command-tag purple">VS Code</span></td>
+                    <td>Terminal panel, integrated commands</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag purple">JetBrains</span></td>
+                    <td>IntelliJ, WebStorm, PyCharm terminal</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag purple">Vim / Neovim</span></td>
+                    <td>Terminal mode, buffer integration</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag purple">Zed</span></td>
+                    <td>Native terminal support</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <ul class="tip-list">
+              <li><span class="tip-icon">💡</span> <strong>VS Code:</strong> Open terminal with <code>Ctrl+`</code> and run <code>claude</code></li>
+              <li><span class="tip-icon">💡</span> <strong>Vim:</strong> Use <code>:term claude</code> to open in split</li>
+              <li><span class="tip-icon">💡</span> <strong>Tmux:</strong> Create a dedicated Claude pane</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Configuration & Doctor -->
+      <div class="accordion" id="configuration" data-searchable>
+        <div class="accordion-header">
+          <div class="accordion-icon">⚙️</div>
+          <div class="accordion-title-group">
+            <div class="accordion-title">Configuration & /doctor</div>
+            <div class="accordion-subtitle">Settings and troubleshooting</div>
+          </div>
+          <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p class="feature-text">
+              Configure Claude Code to match your workflow and diagnose issues with the built-in doctor command.
+            </p>
+
+            <div class="hierarchy-section">
+              <h3 class="hierarchy-title">Configuration Files</h3>
+              <table class="hierarchy-table">
+                <thead>
+                  <tr>
+                    <th>File</th>
+                    <th>Purpose</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="command-tag">~/.claude/settings.json</span></td>
+                    <td>Global settings (model, hooks, MCP)</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag">.claude/settings.json</span></td>
+                    <td>Project-specific settings</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag">CLAUDE.md</span></td>
+                    <td>Project instructions</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="code-block" data-label="DOCTOR COMMAND">
+<span class="code-comment"># Diagnose configuration issues</span>
+> /doctor
+
+<span class="code-comment"># Output shows:</span>
+✓ API key configured
+✓ Model access verified
+✓ MCP servers connected
+⚠ CLAUDE.md not found (optional)
+            </div>
+
+            <div class="hierarchy-section">
+              <h3 class="hierarchy-title">Environment Variables</h3>
+              <table class="hierarchy-table">
+                <thead>
+                  <tr>
+                    <th>Variable</th>
+                    <th>Purpose</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="command-tag orange">ANTHROPIC_API_KEY</span></td>
+                    <td>Your API key</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag orange">CLAUDE_MODEL</span></td>
+                    <td>Default model</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag orange">MAX_THINKING_TOKENS</span></td>
+                    <td>Override thinking budget</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- @ Mentions -->
+      <div class="accordion" id="mentions" data-searchable>
+        <div class="accordion-header">
+          <div class="accordion-icon">@</div>
+          <div class="accordion-title-group">
+            <div class="accordion-title">@ Mentions</div>
+            <div class="accordion-subtitle">Reference files and folders directly in prompts</div>
+          </div>
+          <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p class="feature-text">
+              Use @ mentions to reference files, folders, or URLs directly in your prompts. Claude will automatically read and understand the content.
+            </p>
+
+            <div class="hierarchy-section">
+              <h3 class="hierarchy-title">Mention Types</h3>
+              <table class="hierarchy-table">
+                <thead>
+                  <tr>
+                    <th>Syntax</th>
+                    <th>What it does</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="command-tag">@file.ts</span></td>
+                    <td>Reference a specific file</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag">@src/</span></td>
+                    <td>Reference an entire folder</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag">@https://...</span></td>
+                    <td>Fetch and reference a URL</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag">@git:branch</span></td>
+                    <td>Reference a git branch diff</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="code-block" data-label="EXAMPLES">
+<span class="code-comment"># Reference a file</span>
+> Explain what <span class="code-keyword">@src/utils/auth.ts</span> does
+
+<span class="code-comment"># Compare with URL</span>
+> Compare <span class="code-keyword">@package.json</span> with <span class="code-keyword">@https://example.com/package.json</span>
+
+<span class="code-comment"># Folder context</span>
+> Review all files in <span class="code-keyword">@src/components/</span>
+            </div>
+
+            <div class="info-box">
+              <div class="info-box-title">💡 Pro Tip</div>
+              <div class="info-box-content">
+                Use <code>Tab</code> for autocomplete when typing file paths. Claude will suggest matching files and folders.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Permissions -->
+      <div class="accordion" id="permissions" data-searchable>
+        <div class="accordion-header">
+          <div class="accordion-icon">🔐</div>
+          <div class="accordion-title-group">
+            <div class="accordion-title">Permissions & Safety</div>
+            <div class="accordion-subtitle">Control what Claude can do automatically</div>
+          </div>
+          <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p class="feature-text">
+              Claude Code asks for permission before making changes. You can configure trust levels and auto-accept behaviors.
+            </p>
+
+            <div class="hierarchy-section">
+              <h3 class="hierarchy-title">Permission Levels</h3>
+              <table class="hierarchy-table">
+                <thead>
+                  <tr>
+                    <th>Action</th>
+                    <th>Default Behavior</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="command-tag green">Read files</span></td>
+                    <td>Always allowed</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag yellow">Write/Edit files</span></td>
+                    <td>Asks permission</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag yellow">Run commands</span></td>
+                    <td>Asks permission</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag orange">Delete files</span></td>
+                    <td>Always asks</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="code-block" data-label="AUTO-ACCEPT">
+<span class="code-comment"># Accept all edits for this session</span>
+> Type <span class="code-keyword">a</span> when prompted (accept all)
+
+<span class="code-comment"># Start with auto-accept</span>
+claude <span class="code-flag">--dangerously-skip-permissions</span>
+            </div>
+
+            <div class="usage-grid">
+              <div class="usage-card positive">
+                <div class="usage-card-header">
+                  <div class="usage-icon">✓</div>
+                  Quick Responses
+                </div>
+                <ul class="usage-list">
+                  <li><strong>y</strong> - Yes, allow this action</li>
+                  <li><strong>n</strong> - No, deny this action</li>
+                  <li><strong>a</strong> - Accept all (this session)</li>
+                  <li><strong>e</strong> - Edit before accepting</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="info-box">
+              <div class="info-box-title">⚠️ Safety Warning</div>
+              <div class="info-box-content">
+                Be careful with <code>--dangerously-skip-permissions</code>. Only use in trusted environments or for automated scripts.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Session Resume -->
+      <div class="accordion" id="session-resume" data-searchable>
+        <div class="accordion-header">
+          <div class="accordion-icon">🔄</div>
+          <div class="accordion-title-group">
+            <div class="accordion-title">Session Resume</div>
+            <div class="accordion-subtitle">Continue conversations across sessions</div>
+          </div>
+          <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p class="feature-text">
+              Claude Code saves your conversation history. You can resume previous sessions to continue where you left off.
+            </p>
+
+            <div class="code-block" data-label="RESUME SESSION">
+<span class="code-comment"># Resume the most recent session</span>
+claude <span class="code-flag">--resume</span>
+
+<span class="code-comment"># Or use the slash command</span>
+> /resume
+
+<span class="code-comment"># Continue last conversation (alias)</span>
+claude <span class="code-flag">-c</span>
+            </div>
+
+            <div class="hierarchy-section">
+              <h3 class="hierarchy-title">Session Management</h3>
+              <table class="hierarchy-table">
+                <thead>
+                  <tr>
+                    <th>Command</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="command-tag">/resume</span></td>
+                    <td>Show list of recent sessions</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag">claude --resume</span></td>
+                    <td>Resume most recent session</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag">claude -c</span></td>
+                    <td>Continue last conversation</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <ul class="tip-list">
+              <li><span class="tip-icon">💡</span> Sessions are saved per-project directory</li>
+              <li><span class="tip-icon">💡</span> Use <code>/compact</code> before resuming long sessions</li>
+              <li><span class="tip-icon">💡</span> Session history helps Claude remember context</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Image Support -->
+      <div class="accordion" id="image-support" data-searchable>
+        <div class="accordion-header">
+          <div class="accordion-icon">🖼️</div>
+          <div class="accordion-title-group">
+            <div class="accordion-title">Image Support</div>
+            <div class="accordion-subtitle">Analyze screenshots and images</div>
+          </div>
+          <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p class="feature-text">
+              Claude can see and analyze images! This is incredibly useful for debugging UI issues, understanding designs, or extracting information from screenshots.
+            </p>
+
+            <div class="hierarchy-section">
+              <h3 class="hierarchy-title">Supported Formats</h3>
+              <table class="hierarchy-table">
+                <thead>
+                  <tr>
+                    <th>Format</th>
+                    <th>Use Case</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="command-tag green">PNG</span></td>
+                    <td>Screenshots, UI mockups</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag green">JPG/JPEG</span></td>
+                    <td>Photos, designs</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag green">GIF</span></td>
+                    <td>Simple graphics</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag green">WebP</span></td>
+                    <td>Modern web images</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag green">PDF</span></td>
+                    <td>Documents with images</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="code-block" data-label="EXAMPLES">
+<span class="code-comment"># Reference an image file</span>
+> What's wrong with the UI in <span class="code-keyword">@screenshot.png</span>?
+
+<span class="code-comment"># Debug from error screenshot</span>
+> Fix the error shown in <span class="code-keyword">@error.png</span>
+
+<span class="code-comment"># Implement from design</span>
+> Create this component based on <span class="code-keyword">@design.png</span>
+            </div>
+
+            <div class="usage-grid">
+              <div class="usage-card positive">
+                <div class="usage-card-header">
+                  <div class="usage-icon">🚀</div>
+                  Use Cases
+                </div>
+                <ul class="usage-list">
+                  <li>Debug UI bugs from screenshots</li>
+                  <li>Implement designs from mockups</li>
+                  <li>Analyze error messages</li>
+                  <li>Extract text from images</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vim Mode -->
+      <div class="accordion" id="vim-mode" data-searchable>
+        <div class="accordion-header">
+          <div class="accordion-icon">⌨️</div>
+          <div class="accordion-title-group">
+            <div class="accordion-title">Vim Mode</div>
+            <div class="accordion-subtitle">Vim keybindings for the input</div>
+          </div>
+          <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p class="feature-text">
+              Love Vim? Claude Code has optional Vim keybindings for the input field. Navigate, edit, and write prompts using familiar Vim motions.
+            </p>
+
+            <div class="code-block" data-label="ENABLE VIM MODE">
+<span class="code-comment"># In settings.json</span>
+{
+  <span class="code-string">"inputMode"</span>: <span class="code-string">"vim"</span>
+}
+
+<span class="code-comment"># Or via /config</span>
+> /config
+            </div>
+
+            <div class="hierarchy-section">
+              <h3 class="hierarchy-title">Supported Vim Commands</h3>
+              <table class="hierarchy-table">
+                <thead>
+                  <tr>
+                    <th>Command</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="command-tag orange">i</span></td>
+                    <td>Insert mode</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag orange">Esc</span></td>
+                    <td>Normal mode</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag orange">h/j/k/l</span></td>
+                    <td>Navigation</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag orange">w/b</span></td>
+                    <td>Word navigation</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag orange">dd</span></td>
+                    <td>Delete line</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag orange">yy/p</span></td>
+                    <td>Yank/Paste</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="info-box">
+              <div class="info-box-title">💡 Tip</div>
+              <div class="info-box-content">
+                This only affects the input field. Claude's responses and file editing use the standard interface.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Custom Slash Commands -->
+      <div class="accordion" id="custom-commands" data-searchable>
+        <div class="accordion-header">
+          <div class="accordion-icon">🛠️</div>
+          <div class="accordion-title-group">
+            <div class="accordion-title">Custom Slash Commands</div>
+            <div class="accordion-subtitle">Create your own /commands</div>
+          </div>
+          <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p class="feature-text">
+              Create custom slash commands to automate repetitive prompts. Define templates that expand when you type them.
+            </p>
+
+            <div class="code-block" data-label="SETTINGS.JSON">
+{
+  <span class="code-string">"customCommands"</span>: {
+    <span class="code-string">"/test"</span>: <span class="code-string">"Run all tests and fix any failures"</span>,
+    <span class="code-string">"/pr"</span>: <span class="code-string">"Create a PR with a detailed description"</span>,
+    <span class="code-string">"/refactor"</span>: <span class="code-string">"Refactor this code for better readability"</span>,
+    <span class="code-string">"/doc"</span>: <span class="code-string">"Add JSDoc comments to all functions"</span>
+  }
+}
+            </div>
+
+            <div class="hierarchy-section">
+              <h3 class="hierarchy-title">Command Variables</h3>
+              <table class="hierarchy-table">
+                <thead>
+                  <tr>
+                    <th>Variable</th>
+                    <th>Expands To</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="command-tag purple">$FILE</span></td>
+                    <td>Current file path</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag purple">$SELECTION</span></td>
+                    <td>Selected text (if any)</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag purple">$PROJECT</span></td>
+                    <td>Project root path</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <ul class="tip-list">
+              <li><span class="tip-icon">💡</span> Commands are project-specific when in .claude/settings.json</li>
+              <li><span class="tip-icon">💡</span> Global commands go in ~/.claude/settings.json</li>
+              <li><span class="tip-icon">💡</span> Use for team-shared workflows</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Best Practices -->
+      <div class="accordion" id="best-practices" data-searchable>
+        <div class="accordion-header">
+          <div class="accordion-icon">✨</div>
+          <div class="accordion-title-group">
+            <div class="accordion-title">Best Practices</div>
+            <div class="accordion-subtitle">Get the best results from Claude</div>
+          </div>
+          <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p class="feature-text">
+              Follow these tips to get the best results from Claude Code and maximize your productivity.
+            </p>
+
+            <div class="usage-grid">
+              <div class="usage-card positive">
+                <div class="usage-card-header">
+                  <div class="usage-icon">✓</div>
+                  Do This
+                </div>
+                <ul class="usage-list">
+                  <li>Be specific about what you want</li>
+                  <li>Provide context with @ mentions</li>
+                  <li>Break complex tasks into steps</li>
+                  <li>Use CLAUDE.md for project context</li>
+                  <li>Review changes before accepting</li>
+                </ul>
+              </div>
+              <div class="usage-card negative">
+                <div class="usage-card-header">
+                  <div class="usage-icon">✗</div>
+                  Avoid This
+                </div>
+                <ul class="usage-list">
+                  <li>Vague requests like "fix it"</li>
+                  <li>Skipping the review step</li>
+                  <li>Ignoring context limits</li>
+                  <li>Not using /compact in long sessions</li>
+                  <li>Assuming Claude knows everything</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="hierarchy-section">
+              <h3 class="hierarchy-title">Prompt Patterns</h3>
+              <table class="hierarchy-table">
+                <thead>
+                  <tr>
+                    <th>Instead of...</th>
+                    <th>Try...</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="command-tag orange">"Fix the bug"</span></td>
+                    <td>"Fix the null pointer error in @auth.ts line 42"</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag orange">"Make it faster"</span></td>
+                    <td>"Optimize the database query in @users.ts to use indexing"</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag orange">"Add tests"</span></td>
+                    <td>"Add unit tests for the login function covering edge cases"</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="info-box">
+              <div class="info-box-title">🎯 The Golden Rule</div>
+              <div class="info-box-content">
+                The more context and specificity you provide, the better Claude's response will be. Treat it like explaining to a skilled colleague who just joined your project.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Common Errors -->
+      <div class="accordion" id="common-errors" data-searchable>
+        <div class="accordion-header">
+          <div class="accordion-icon">🐛</div>
+          <div class="accordion-title-group">
+            <div class="accordion-title">Troubleshooting</div>
+            <div class="accordion-subtitle">Common errors and solutions</div>
+          </div>
+          <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p class="feature-text">
+              Common issues and how to fix them. Run <code>/doctor</code> first to diagnose most problems.
+            </p>
+
+            <div class="hierarchy-section">
+              <h3 class="hierarchy-title">Common Errors</h3>
+              <table class="hierarchy-table">
+                <thead>
+                  <tr>
+                    <th>Error</th>
+                    <th>Solution</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="command-tag orange">Rate limit exceeded</span></td>
+                    <td>Wait a few minutes, or use /compact to reduce tokens</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag orange">API key invalid</span></td>
+                    <td>Check ANTHROPIC_API_KEY env variable</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag orange">Context too long</span></td>
+                    <td>Use /compact or /clear to reduce context</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag orange">File not found</span></td>
+                    <td>Check file path and use Tab for autocomplete</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag orange">Permission denied</span></td>
+                    <td>Check file permissions or run with sudo</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag orange">MCP connection failed</span></td>
+                    <td>Check MCP server config and restart Claude</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="code-block" data-label="QUICK FIXES">
+<span class="code-comment"># Run diagnostics</span>
+> /doctor
+
+<span class="code-comment"># Clear everything and start fresh</span>
+> /clear
+
+<span class="code-comment"># Reduce context if hitting limits</span>
+> /compact
+
+<span class="code-comment"># Check your API key</span>
+echo $ANTHROPIC_API_KEY
+            </div>
+
+            <div class="info-box">
+              <div class="info-box-title">🆘 Still stuck?</div>
+              <div class="info-box-content">
+                Use <code>/bug</code> to report issues to Anthropic, or check <a href="https://github.com/anthropics/claude-code/issues" style="color: var(--accent-cyan);">GitHub Issues</a> for known problems.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Background Tasks -->
+      <div class="accordion" id="background-tasks" data-searchable>
+        <div class="accordion-header">
+          <div class="accordion-icon">⏳</div>
+          <div class="accordion-title-group">
+            <div class="accordion-title">Background Tasks</div>
+            <div class="accordion-subtitle">Run long operations in the background</div>
+          </div>
+          <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p class="feature-text">
+              Claude can run tasks in the background while you continue working. Great for long builds, tests, or complex operations.
+            </p>
+
+            <div class="code-block" data-label="USAGE">
+<span class="code-comment"># Ask Claude to run something in background</span>
+> Run the full test suite in the background
+
+<span class="code-comment"># Check on running tasks</span>
+> /tasks
+
+<span class="code-comment"># Claude will notify when done</span>
+            </div>
+
+            <div class="hierarchy-section">
+              <h3 class="hierarchy-title">Task Management</h3>
+              <table class="hierarchy-table">
+                <thead>
+                  <tr>
+                    <th>Command</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="command-tag">/tasks</span></td>
+                    <td>List all running background tasks</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag">Notification hook</span></td>
+                    <td>Get notified when tasks complete</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="usage-grid">
+              <div class="usage-card positive">
+                <div class="usage-card-header">
+                  <div class="usage-icon">🚀</div>
+                  Use Cases
+                </div>
+                <ul class="usage-list">
+                  <li>Running full test suites</li>
+                  <li>Long builds and compilations</li>
+                  <li>Large file processing</li>
+                  <li>Multiple parallel operations</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-logo">claude<span>_</span>guide</div>
+      <div class="footer-links">
+        <a href="https://github.com/vavasilva/claudecode-guide" class="footer-link" target="_blank">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+          </svg>
+          GitHub
+        </a>
+        <a href="https://docs.anthropic.com/claude-code" class="footer-link" target="_blank">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <polyline points="10 9 9 9 8 9"/>
+          </svg>
+          Docs
+        </a>
+      </div>
+      <p class="footer-copy">
+        Made with Claude Code • 2025
+      </p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
