@@ -1,3 +1,6 @@
+# Dependencies
+node_modules/
+
 # OS files
 .DS_Store
 Thumbs.db
@@ -11,3 +14,9 @@ Thumbs.db
 
 # Local dev
 *.log
+
+# Test coverage
+coverage/
+
+# TypeScript build info
+*.tsbuildinfo
