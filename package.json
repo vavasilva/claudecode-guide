@@ -1,0 +1,46 @@
+{
+  "name": "claudecode-guide",
+  "version": "1.0.0",
+  "description": "Static website guide for Claude Code CLI with tips, tricks, and productivity hacks",
+  "type": "module",
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "esbuild src/app.ts --bundle --minify --outfile=dist/app.js --format=iife --target=es2020",
+    "build:dev": "esbuild src/app.ts --bundle --outfile=dist/app.js --format=iife --target=es2020 --sourcemap",
+    "build:check": "tsc --noEmit",
+    "lint": "eslint src tests",
+    "lint:fix": "eslint src tests --fix",
+    "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\" \"*.config.{js,ts}\"",
+    "format:check": "prettier --check \"src/**/*.ts\" \"tests/**/*.ts\" \"*.config.{js,ts}\"",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "check": "npm run build:check && npm run lint && npm run format:check && npm run test",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "claude",
+    "claude-code",
+    "cli",
+    "guide",
+    "documentation"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@types/node": "^22.10.2",
+    "@vitest/coverage-v8": "^2.1.8",
+    "esbuild": "^0.24.2",
+    "eslint": "^9.17.0",
+    "eslint-config-prettier": "^9.1.0",
+    "globals": "^15.14.0",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.18.2",
+    "vitest": "^2.1.8"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
