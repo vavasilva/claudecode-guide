@@ -515,6 +515,158 @@ export const searchData: SearchItem[] = [
     section: '#custom-commands',
   },
 
+  // Multi-file Editing
+  {
+    id: 'multi-file',
+    title: 'Multi-file Editing',
+    tag: 'Feature',
+    content:
+      'Claude Code excels at multi-file operations using agentic search to understand your entire codebase without manual context selection.',
+    section: '#multi-file',
+  },
+  {
+    id: 'agentic-search',
+    title: 'Agentic Search',
+    tag: 'Feature',
+    content:
+      'Automatically finds relevant files without manual selection. Follows dependencies and understands architecture.',
+    section: '#multi-file',
+  },
+  {
+    id: 'cross-file-refactor',
+    title: 'Cross-file Refactoring',
+    tag: 'Feature',
+    content:
+      'Rename symbols, update imports, and make changes across the entire codebase in a single operation.',
+    section: '#multi-file',
+  },
+  {
+    id: 'parallel-instances',
+    title: 'Parallel Instances',
+    tag: 'Tip',
+    content:
+      'Run multiple Claude instances in parallel in different IDE panes, each working on separate parts of your codebase.',
+    section: '#multi-file',
+  },
+
+  // Sub-agents
+  {
+    id: 'sub-agents',
+    title: 'Sub-agents',
+    tag: 'Feature',
+    content:
+      'Delegate complex tasks to specialized agents that run in isolated contexts. Enable parallelization and better context management.',
+    section: '#sub-agents',
+  },
+  {
+    id: 'task-tool',
+    title: 'Task Tool',
+    tag: 'Feature',
+    content:
+      'Sub-agents are invoked via the Task tool. They run in isolated context windows and only return final results.',
+    section: '#sub-agents',
+  },
+  {
+    id: 'general-purpose-agent',
+    title: 'General Purpose Agent',
+    tag: 'Agent',
+    content:
+      'Built-in default agent for any task. Claude can spawn it automatically when Task tool is available.',
+    section: '#sub-agents',
+  },
+  {
+    id: 'explore-agent',
+    title: 'Explore Agent',
+    tag: 'Agent',
+    content:
+      'Fast codebase exploration agent. Use for quickly finding files, searching code, or understanding structure.',
+    section: '#sub-agents',
+  },
+  {
+    id: 'plan-agent',
+    title: 'Plan Agent',
+    tag: 'Agent',
+    content:
+      'Architecture and implementation planning agent. Designs approaches and identifies critical files.',
+    section: '#sub-agents',
+  },
+  {
+    id: 'custom-agents',
+    title: 'Custom Agents',
+    tag: 'Config',
+    content:
+      'Define custom agents as markdown files in .claude/agents/ directory with specialized instructions.',
+    section: '#sub-agents',
+  },
+
+  // Context Management
+  {
+    id: 'context-management',
+    title: 'Context Management',
+    tag: 'Feature',
+    content:
+      'Manage your 200K token context window (500K Enterprise, 1M beta) for optimal performance on long-running tasks.',
+    section: '#context-management',
+  },
+  {
+    id: 'context-command',
+    title: '/context Command',
+    tag: 'Command',
+    content:
+      'Check current context usage mid-session. Understand how you are using your token budget.',
+    section: '#context-management',
+  },
+  {
+    id: 'compaction',
+    title: 'Context Compaction',
+    tag: 'Feature',
+    content:
+      'Claude triggers compaction at 75% utilization to leave room for reasoning. Use /compact manually when needed.',
+    section: '#context-management',
+  },
+  {
+    id: 'context-quality',
+    title: 'Context Quality',
+    tag: 'Tip',
+    content:
+      'Quality degrades as context fills. Keep 25% free (50K tokens) for reasoning. Compact early, not at 90%.',
+    section: '#context-management',
+  },
+
+  // Memory
+  {
+    id: 'memory',
+    title: 'Memory',
+    tag: 'Feature',
+    content:
+      'Hierarchical memory system through CLAUDE.md files to remember preferences and project context across sessions.',
+    section: '#memory',
+  },
+  {
+    id: 'memory-hierarchy',
+    title: 'Memory Hierarchy',
+    tag: 'Concept',
+    content:
+      'Four levels: Enterprise policy (highest), Project memory, Project rules, User preferences (lowest).',
+    section: '#memory',
+  },
+  {
+    id: 'project-rules',
+    title: 'Project Rules',
+    tag: 'Config',
+    content:
+      'Modular rule files in .claude/rules/ directory. Split instructions into separate focused files.',
+    section: '#memory',
+  },
+  {
+    id: 'memory-best-practices',
+    title: 'Memory Best Practices',
+    tag: 'Tip',
+    content:
+      'Start minimal, add based on what Claude gets wrong. Store detailed docs separately, reference with @ when needed.',
+    section: '#memory',
+  },
+
   // Best Practices
   {
     id: 'best-practices',
