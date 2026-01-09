@@ -24,6 +24,7 @@
       <li><a href="#mentions" class="nav-link">@ Mentions</a></li>
       <li><a href="#slash-commands" class="nav-link">⚡ Slash Commands</a></li>
       <li><a href="#custom-commands" class="nav-link">🔧 Custom Commands</a></li>
+      <li><a href="#multi-file" class="nav-link">📁 Multi-file Editing</a></li>
 
       <li class="nav-section-title">Usage</li>
       <li><a href="#keyboard-shortcuts" class="nav-link">⌨️ Keyboard Shortcuts</a></li>
@@ -34,6 +35,7 @@
       <li class="nav-section-title">Integration</li>
       <li><a href="#mcp-servers" class="nav-link">🔌 MCP Servers</a></li>
       <li><a href="#hooks" class="nav-link">🪝 Hooks</a></li>
+      <li><a href="#sub-agents" class="nav-link">🤝 Sub-agents</a></li>
       <li><a href="#git-integration" class="nav-link">🌿 Git Integration</a></li>
       <li><a href="#ide-integrations" class="nav-link">💻 IDE Integration</a></li>
       <li><a href="#headless-mode" class="nav-link">🤖 Headless Mode</a></li>
@@ -41,6 +43,8 @@
 
       <li class="nav-section-title">Configuration</li>
       <li><a href="#configuration" class="nav-link">⚙️ Configuration</a></li>
+      <li><a href="#context-management" class="nav-link">📊 Context Management</a></li>
+      <li><a href="#memory" class="nav-link">🧠 Memory</a></li>
       <li><a href="#permissions" class="nav-link">🔒 Permissions</a></li>
       <li><a href="#session-resume" class="nav-link">🔄 Session Resume</a></li>
 
@@ -590,6 +594,102 @@ claude <span class="code-flag">--model</span> <span class="code-string">haiku</s
         </div>
       </div>
 
+      <!-- Sub-agents -->
+      <div class="accordion" id="sub-agents" data-searchable>
+        <div class="accordion-header">
+          <div class="accordion-icon">🤝</div>
+          <div class="accordion-title-group">
+            <div class="accordion-title">Sub-agents</div>
+            <div class="accordion-subtitle">Delegate tasks to specialized agents</div>
+          </div>
+          <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p class="feature-text">
+              Sub-agents allow Claude to delegate complex tasks to specialized agents that run in isolated contexts. They enable parallelization, better context management, and domain-specific expertise.
+            </p>
+
+            <div class="hierarchy-section">
+              <h3 class="hierarchy-title">Sub-agent Benefits</h3>
+              <table class="hierarchy-table">
+                <thead>
+                  <tr>
+                    <th>Benefit</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="command-tag purple">Parallelization</span></td>
+                    <td>Run multiple tasks simultaneously</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag purple">Context Isolation</span></td>
+                    <td>Each agent has its own context window</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag purple">Specialization</span></td>
+                    <td>Fine-tuned instructions for specific domains</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag purple">Tool Control</span></td>
+                    <td>Different tool access per agent type</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="code-block" data-label="CUSTOM AGENT (.claude/agents/reviewer.md)">
+<span class="code-comment"># Code Reviewer Agent</span>
+
+You are a specialized code review agent.
+Focus on:
+- Security vulnerabilities
+- Performance issues
+- Code style consistency
+
+Only report significant issues.
+            </div>
+
+            <div class="hierarchy-section">
+              <h3 class="hierarchy-title">Built-in Agents</h3>
+              <table class="hierarchy-table">
+                <thead>
+                  <tr>
+                    <th>Agent</th>
+                    <th>Use Case</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="command-tag">general-purpose</span></td>
+                    <td>Default agent for any task</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag">Explore</span></td>
+                    <td>Fast codebase exploration</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag">Plan</span></td>
+                    <td>Architecture and implementation planning</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="info-box">
+              <div class="info-box-title">💡 Context Management</div>
+              <div class="info-box-content">
+                Sub-agents only return their final results to the main context, keeping your primary conversation clean and focused. Great for complex tasks that would otherwise bloat context.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- MCP Servers -->
       <div class="accordion" id="mcp-servers" data-searchable>
         <div class="accordion-header">
@@ -995,6 +1095,181 @@ claude <span class="code-flag">-p</span> <span class="code-string">"Generate tes
                 </tbody>
               </table>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Context Management -->
+      <div class="accordion" id="context-management" data-searchable>
+        <div class="accordion-header">
+          <div class="accordion-icon">📊</div>
+          <div class="accordion-title-group">
+            <div class="accordion-title">Context Management</div>
+            <div class="accordion-subtitle">Optimize your 200K token context window</div>
+          </div>
+          <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p class="feature-text">
+              Claude Code has a 200K token context window (500K for Enterprise, 1M beta). Learn to manage it effectively for optimal performance on long-running tasks.
+            </p>
+
+            <div class="hierarchy-section">
+              <h3 class="hierarchy-title">Context Strategies</h3>
+              <table class="hierarchy-table">
+                <thead>
+                  <tr>
+                    <th>Strategy</th>
+                    <th>When to Use</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="command-tag">/compact</span></td>
+                    <td>When context exceeds 50% - summarizes while preserving key info</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag">/context</span></td>
+                    <td>Check current context usage mid-session</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag green">Sub-agents</span></td>
+                    <td>Isolate complex tasks to separate context windows</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag green">@ Mentions</span></td>
+                    <td>Load files on-demand instead of all at once</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="code-block" data-label="CONTEXT TIPS">
+<span class="code-comment"># Check context usage</span>
+> /context
+
+<span class="code-comment"># Compact before hitting limits</span>
+> /compact
+
+<span class="code-comment"># Use sub-agents for complex tasks</span>
+> Use a sub-agent to analyze all test files
+            </div>
+
+            <div class="usage-grid">
+              <div class="usage-card positive">
+                <div class="usage-card-header">
+                  <div class="usage-icon">✓</div>
+                  Best Practices
+                </div>
+                <ul class="usage-list">
+                  <li>Be specific - avoid "fix my app"</li>
+                  <li>Use @ mentions for targeted context</li>
+                  <li>Compact at ~50% usage, not 90%</li>
+                  <li>Keep CLAUDE.md minimal</li>
+                </ul>
+              </div>
+              <div class="usage-card negative">
+                <div class="usage-card-header">
+                  <div class="usage-icon">✗</div>
+                  Avoid
+                </div>
+                <ul class="usage-list">
+                  <li>Loading entire codebase at start</li>
+                  <li>Long back-and-forth conversations</li>
+                  <li>Waiting until context is full</li>
+                  <li>Ignoring compaction warnings</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="info-box">
+              <div class="info-box-title">📈 Performance Impact</div>
+              <div class="info-box-content">
+                Quality degrades as context fills. Keep 25% free (50K tokens) for reasoning. Compact triggers at 75% to leave room for high-quality responses.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Memory -->
+      <div class="accordion" id="memory" data-searchable>
+        <div class="accordion-header">
+          <div class="accordion-icon">🧠</div>
+          <div class="accordion-title-group">
+            <div class="accordion-title">Memory</div>
+            <div class="accordion-subtitle">Persistent context across sessions</div>
+          </div>
+          <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p class="feature-text">
+              Claude Code uses a hierarchical memory system through CLAUDE.md files to remember preferences, project context, and instructions across sessions.
+            </p>
+
+            <div class="hierarchy-section">
+              <h3 class="hierarchy-title">Memory Hierarchy</h3>
+              <table class="hierarchy-table">
+                <thead>
+                  <tr>
+                    <th>Level</th>
+                    <th>Location</th>
+                    <th>Scope</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="command-tag orange">Enterprise</span></td>
+                    <td>Organization policy</td>
+                    <td>IT rules, compliance</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag purple">Project</span></td>
+                    <td>.claude/CLAUDE.md</td>
+                    <td>Team instructions</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag purple">Project Rules</span></td>
+                    <td>.claude/rules/</td>
+                    <td>Modular rule files</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag">User</span></td>
+                    <td>~/.claude/CLAUDE.md</td>
+                    <td>Personal preferences</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="code-block" data-label="EXAMPLE CLAUDE.md">
+<span class="code-comment"># Project Memory</span>
+
+<span class="code-comment">## Tech Stack</span>
+- TypeScript, React 18, Vite
+- Jest for testing
+
+<span class="code-comment">## Commands</span>
+- Build: npm run build
+- Test: npm run test
+
+<span class="code-comment">## Style</span>
+- Use functional components
+- Prefer named exports
+            </div>
+
+            <ul class="tip-list">
+              <li><span class="tip-icon">💡</span> Start minimal - add to CLAUDE.md based on what Claude gets wrong</li>
+              <li><span class="tip-icon">💡</span> Store detailed docs in <code>docs/</code> folder, reference with @ when needed</li>
+              <li><span class="tip-icon">💡</span> Use <code>/init</code> to bootstrap a CLAUDE.md for your project</li>
+              <li><span class="tip-icon">💡</span> Team-shared instructions go in project, personal prefs in ~/.claude/</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -1430,6 +1705,90 @@ claude <span class="code-flag">-c</span>
               <li><span class="tip-icon">💡</span> Global commands go in ~/.claude/settings.json</li>
               <li><span class="tip-icon">💡</span> Use for team-shared workflows</li>
             </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Multi-file Editing -->
+      <div class="accordion" id="multi-file" data-searchable>
+        <div class="accordion-header">
+          <div class="accordion-icon">📁</div>
+          <div class="accordion-title-group">
+            <div class="accordion-title">Multi-file Editing</div>
+            <div class="accordion-subtitle">Work across your entire codebase</div>
+          </div>
+          <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p class="feature-text">
+              Claude Code excels at multi-file operations, using agentic search to understand your entire codebase without manual context selection. Perfect for refactors, feature implementation, and cross-cutting changes.
+            </p>
+
+            <div class="hierarchy-section">
+              <h3 class="hierarchy-title">Multi-file Capabilities</h3>
+              <table class="hierarchy-table">
+                <thead>
+                  <tr>
+                    <th>Feature</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="command-tag green">Agentic Search</span></td>
+                    <td>Automatically finds relevant files without manual selection</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag green">Cross-file Refactors</span></td>
+                    <td>Rename symbols, update imports across the codebase</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag green">Parallel Instances</span></td>
+                    <td>Run multiple Claude instances on different parts of codebase</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag green">Deep Understanding</span></td>
+                    <td>Follows dependencies, understands architecture</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="code-block" data-label="EXAMPLES">
+<span class="code-comment"># Refactor across multiple files</span>
+> Rename the User class to Account and update all references
+
+<span class="code-comment"># Implement feature touching many files</span>
+> Add authentication middleware to all API routes
+
+<span class="code-comment"># Analyze codebase patterns</span>
+> Find all places where we handle errors inconsistently
+            </div>
+
+            <div class="usage-grid">
+              <div class="usage-card positive">
+                <div class="usage-card-header">
+                  <div class="usage-icon">🚀</div>
+                  Best Use Cases
+                </div>
+                <ul class="usage-list">
+                  <li>Large-scale refactoring</li>
+                  <li>Adding cross-cutting features</li>
+                  <li>Codebase-wide bug fixes</li>
+                  <li>Migration tasks</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="info-box">
+              <div class="info-box-title">💡 Pro Tip</div>
+              <div class="info-box-content">
+                Run multiple Claude instances in parallel in different IDE panes, each working on separate parts of your codebase for maximum efficiency.
+              </div>
+            </div>
           </div>
         </div>
       </div>
