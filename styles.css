@@ -219,11 +219,6 @@ body::after {
   visibility: visible;
 }
 
-/* Adjust search toggle position */
-.search-toggle {
-  left: 4.5rem;
-}
-
 /* Search Bar */
 .search-container {
   position: fixed;
