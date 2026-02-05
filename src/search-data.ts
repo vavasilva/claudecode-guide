@@ -4,36 +4,216 @@ import type { SearchItem } from './types';
  * Searchable content database for Claude Code Guide
  */
 export const searchData: SearchItem[] = [
-  // Ultrathink
+  // Extended Thinking (formerly Ultrathink)
   {
     id: 'ultrathink',
-    title: 'Ultrathink',
+    title: 'Extended Thinking',
     tag: 'Feature',
     content:
-      'A magic word that activates the maximum thinking budget extended thinking. Unlocks up to 31,999 tokens of internal reasoning for complex problems.',
+      'Extended thinking allows Claude to reason deeply with up to 31,999 tokens. Since v2.0.x, it is enabled by default. Magic words like ultrathink are deprecated.',
     section: '#ultrathink',
   },
   {
     id: 'think',
-    title: 'think command',
-    tag: 'Command',
-    content: 'Basic thinking mode with approximately 4,000 tokens of reasoning capacity.',
+    title: 'think command (Deprecated)',
+    tag: 'Deprecated',
+    content:
+      'The think keyword is deprecated since Claude Code v2.0.x. Extended thinking is now automatic.',
     section: '#ultrathink',
   },
   {
     id: 'megathink',
-    title: 'think hard / megathink',
-    tag: 'Command',
-    content: 'Medium thinking mode with approximately 10,000 tokens of reasoning.',
+    title: 'megathink (Deprecated)',
+    tag: 'Deprecated',
+    content:
+      'The megathink and think hard keywords are deprecated since Claude Code v2.0.x. Extended thinking is now automatic.',
     section: '#ultrathink',
   },
   {
     id: 'thinking-tokens',
-    title: 'Thinking Tokens',
+    title: 'MAX_THINKING_TOKENS',
+    tag: 'Config',
+    content:
+      'Environment variable to control thinking budget. Set MAX_THINKING_TOKENS=10000 to limit tokens. Overrides automatic behavior.',
+    section: '#ultrathink',
+  },
+  {
+    id: 'automatic-thinking',
+    title: 'Automatic Thinking',
+    tag: 'Feature',
+    content:
+      'Since v2.0.x, Claude Code automatically enables extended thinking for complex tasks. No magic words needed.',
+    section: '#ultrathink',
+  },
+
+  // Task Tools
+  {
+    id: 'task-tools',
+    title: 'Task Tools',
+    tag: 'Feature',
+    content:
+      'Create and manage visible task lists in the terminal. Track progress with TaskCreate, TaskUpdate, TaskList, TaskGet.',
+    section: '#task-tools',
+  },
+  {
+    id: 'task-create',
+    title: 'TaskCreate',
+    tag: 'Tool',
+    content:
+      'Create a new task with subject, description, and activeForm (spinner text). Tasks appear in terminal with visual progress.',
+    section: '#task-tools',
+  },
+  {
+    id: 'task-update',
+    title: 'TaskUpdate',
+    tag: 'Tool',
+    content:
+      'Update task status: pending, in_progress, completed, deleted. Can also add blockedBy dependencies.',
+    section: '#task-tools',
+  },
+  {
+    id: 'active-form',
+    title: 'activeForm',
     tag: 'Concept',
     content:
-      'The amount of internal reasoning Claude uses. think: 4000, megathink: 10000, ultrathink: 31999 tokens.',
-    section: '#ultrathink',
+      'Text shown in the spinner when a task is in_progress. Example: "Building release..." appears with animated spinner.',
+    section: '#task-tools',
+  },
+  {
+    id: 'blocked-by',
+    title: 'blockedBy',
+    tag: 'Concept',
+    content:
+      'Task dependency system. A task with blockedBy cannot start until blocking tasks complete. Shows as "[blocked by #X]" in list.',
+    section: '#task-tools',
+  },
+
+  // Plan Mode
+  {
+    id: 'plan-mode',
+    title: 'Plan Mode',
+    tag: 'Feature',
+    content:
+      'Design implementation approach before writing code. Claude explores codebase, creates plan, gets approval, then implements.',
+    section: '#plan-mode',
+  },
+  {
+    id: 'enter-plan-mode',
+    title: 'EnterPlanMode',
+    tag: 'Tool',
+    content:
+      'Start planning mode. Claude can only read files and explore, no edits allowed until plan is approved.',
+    section: '#plan-mode',
+  },
+  {
+    id: 'exit-plan-mode',
+    title: 'ExitPlanMode',
+    tag: 'Tool',
+    content:
+      'Request user approval for the plan. Once approved, Claude exits plan mode and can implement changes.',
+    section: '#plan-mode',
+  },
+  {
+    id: 'planning-phases',
+    title: 'Planning Phases',
+    tag: 'Concept',
+    content:
+      'Plan mode workflow: Explore → Design → Review → Write Plan → Approve. Each phase has specific goals and tools.',
+    section: '#plan-mode',
+  },
+
+  // Custom Skills
+  {
+    id: 'custom-skills',
+    title: 'Custom Skills',
+    tag: 'Config',
+    content:
+      'Complex reusable prompts defined in ~/.claude/skills.json. Invoke with /skill-name. More powerful than custom commands.',
+    section: '#custom-skills',
+  },
+  {
+    id: 'skills-json',
+    title: 'skills.json',
+    tag: 'Config',
+    content:
+      'Configuration file for custom skills at ~/.claude/skills.json. Define name, description, and prompt for each skill.',
+    section: '#custom-skills',
+  },
+  {
+    id: 'skills-vs-commands',
+    title: 'Skills vs Commands',
+    tag: 'Concept',
+    content:
+      'Commands are simple text expansion in settings.json. Skills are multi-step workflows in skills.json with descriptions.',
+    section: '#custom-skills',
+  },
+
+  // Serena MCP
+  {
+    id: 'serena-mcp',
+    title: 'Serena MCP',
+    tag: 'Integration',
+    content:
+      'MCP server for semantic code understanding via LSP. Provides symbol navigation, intelligent editing, and persistent memories.',
+    section: '#serena-mcp',
+  },
+  {
+    id: 'serena-memories',
+    title: 'Serena Memories',
+    tag: 'Feature',
+    content:
+      'Persistent project context stored in .serena/memories/. Use read_memory, write_memory, list_memories to manage.',
+    section: '#serena-mcp',
+  },
+  {
+    id: 'symbolic-tools',
+    title: 'Symbolic Tools',
+    tag: 'Feature',
+    content:
+      'find_symbol, replace_symbol_body, rename_symbol, find_referencing_symbols. Navigate and edit code by symbol names.',
+    section: '#serena-mcp',
+  },
+  {
+    id: 'find-symbol',
+    title: 'find_symbol',
+    tag: 'Tool',
+    content:
+      'Find symbols by name pattern in Serena. Use with include_body=True to get full source code of the symbol.',
+    section: '#serena-mcp',
+  },
+
+  // Workflow Patterns
+  {
+    id: 'workflow-patterns',
+    title: 'Workflow Patterns',
+    tag: 'Guide',
+    content:
+      'Combine Tasks, Agents, Plan Mode, and Background operations for development workflows. Issue → Plan → Implement → PR → Test → Merge → Release.',
+    section: '#workflow-patterns',
+  },
+  {
+    id: 'development-workflow',
+    title: 'Development Workflow',
+    tag: 'Guide',
+    content:
+      '8-step workflow: Create Issue, Plan, Implement, Open PR, Test, Merge, Wait for CI, Release. Skip release for docs-only changes.',
+    section: '#workflow-patterns',
+  },
+  {
+    id: 'combining-tools',
+    title: 'Combining Tools',
+    tag: 'Guide',
+    content:
+      'Tasks + blockedBy for sequences, parallel agents for exploration, background tasks for builds, memories for persistence.',
+    section: '#workflow-patterns',
+  },
+  {
+    id: 'skip-release',
+    title: 'Skip Release',
+    tag: 'Tip',
+    content:
+      'Skip build/release steps for documentation, config, or non-code changes that do not affect the app binary.',
+    section: '#workflow-patterns',
   },
 
   // CLAUDE.md

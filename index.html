@@ -130,13 +130,13 @@
   <div class="accordion-container">
     <div class="container">
 
-      <!-- Ultrathink -->
+      <!-- Extended Thinking -->
       <div class="accordion active" id="ultrathink" data-searchable>
         <div class="accordion-header">
           <div class="accordion-icon">🧠</div>
           <div class="accordion-title-group">
-            <div class="accordion-title">Ultrathink</div>
-            <div class="accordion-subtitle">Unlock maximum thinking power with magic words</div>
+            <div class="accordion-title">Extended Thinking</div>
+            <div class="accordion-subtitle">Automatic deep reasoning (formerly Ultrathink)</div>
           </div>
           <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <polyline points="6 9 12 15 18 9"/>
@@ -144,86 +144,93 @@
         </div>
         <div class="accordion-content">
           <div class="accordion-body">
+            <div class="info-box" style="background: #fff3cd; border-color: #ffc107; color: #856404;">
+              <div class="info-box-title" style="color: #856404;">⚠️ Breaking Change (v2.0.x)</div>
+              <div class="info-box-content" style="color: #856404;">
+                Since Claude Code v2.0.x, extended thinking is <strong>enabled by default</strong>.
+                The magic words (<code style="background: #ffe69c; color: #664d03;">think</code>, <code style="background: #ffe69c; color: #664d03;">ultrathink</code>, etc.) are now <strong>deprecated</strong>.
+                See <a href="https://github.com/anthropics/claude-code/issues/19098" target="_blank" style="color: #664d03;">#19098</a> for details.
+              </div>
+            </div>
+
             <p class="feature-text">
-              A "magic word" that activates the maximum thinking budget in Claude Code.
-              When you need Claude to reason deeply about complex problems, ultrathink
-              unlocks extended thinking with up to 31,999 tokens of internal reasoning.
+              Extended thinking allows Claude to reason through complex problems with up to 31,999 tokens
+              of internal reasoning. Previously triggered by magic words, it's now automatic.
             </p>
 
             <div class="hierarchy-section">
-              <h3 class="hierarchy-title">Thinking Hierarchy</h3>
+              <h3 class="hierarchy-title">How It Works Now</h3>
               <table class="hierarchy-table">
                 <thead>
                   <tr>
-                    <th>Command</th>
-                    <th>Thinking Tokens</th>
+                    <th>Method</th>
+                    <th>Status</th>
+                    <th>Notes</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td><span class="command-tag">think</span></td>
-                    <td>
-                      <div class="tokens-bar">
-                        <div class="tokens-fill" style="width: 40px;"></div>
-                        <span class="tokens-value">~4,000 tokens</span>
-                      </div>
-                    </td>
+                    <td><span class="command-tag" style="background: #6c757d;">think</span></td>
+                    <td><span style="color: #dc3545;">Deprecated</span></td>
+                    <td>No longer triggers extended thinking</td>
                   </tr>
                   <tr>
-                    <td><span class="command-tag">think hard</span> / <span class="command-tag">megathink</span></td>
-                    <td>
-                      <div class="tokens-bar">
-                        <div class="tokens-fill" style="width: 100px;"></div>
-                        <span class="tokens-value">~10,000 tokens</span>
-                      </div>
-                    </td>
+                    <td><span class="command-tag" style="background: #6c757d;">ultrathink</span></td>
+                    <td><span style="color: #dc3545;">Deprecated</span></td>
+                    <td>No longer triggers extended thinking</td>
                   </tr>
                   <tr>
-                    <td><span class="command-tag">think harder</span> / <span class="command-tag">ultrathink</span></td>
-                    <td>
-                      <div class="tokens-bar">
-                        <div class="tokens-fill" style="width: 200px;"></div>
-                        <span class="tokens-value">~31,999 tokens (max)</span>
-                      </div>
-                    </td>
+                    <td><span class="command-tag">Automatic</span></td>
+                    <td><span style="color: #28a745;">Active</span></td>
+                    <td>Thinking enabled by default in v2.0.x+</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag">MAX_THINKING_TOKENS</span></td>
+                    <td><span style="color: #28a745;">Supported</span></td>
+                    <td>Environment variable to control budget</td>
                   </tr>
                 </tbody>
               </table>
             </div>
 
-            <div class="code-block" data-label="EXAMPLE">
-              <span class="code-keyword">ultrathink</span> - How to refactor this microservices architecture to scale 100x?
+            <div class="code-block" data-label="CONTROLLING THINKING BUDGET">
+# Set maximum thinking tokens (overrides automatic behavior)
+<span class="code-keyword">export</span> MAX_THINKING_TOKENS=10000
+
+# Or per-session
+MAX_THINKING_TOKENS=32000 claude
             </div>
 
             <div class="usage-grid">
               <div class="usage-card positive">
                 <div class="usage-card-header">
                   <div class="usage-icon">✓</div>
-                  When to Use
+                  Current Behavior
                 </div>
                 <ul class="usage-list">
-                  <li>Complex architectural decisions</li>
-                  <li>Debugging difficult problems</li>
-                  <li>Multi-step problem solving</li>
+                  <li>Thinking is automatic for complex tasks</li>
+                  <li>Claude decides when to think deeply</li>
+                  <li>Use MAX_THINKING_TOKENS to override</li>
                 </ul>
               </div>
               <div class="usage-card negative">
                 <div class="usage-card-header">
                   <div class="usage-icon">✗</div>
-                  When to Avoid
+                  No Longer Works
                 </div>
                 <ul class="usage-list">
-                  <li>Simple questions or tasks</li>
-                  <li>Quick code generation</li>
-                  <li>Token budget is limited</li>
+                  <li><code>think</code> keyword</li>
+                  <li><code>think hard</code> / <code>megathink</code></li>
+                  <li><code>ultrathink</code></li>
                 </ul>
               </div>
             </div>
 
             <div class="info-box">
-              <div class="info-box-title">⚠️ Limitations</div>
+              <div class="info-box-title">📝 Community Feedback</div>
               <div class="info-box-content">
-                Only works in Claude Code CLI (terminal). If <code>MAX_THINKING_TOKENS</code> is configured, it takes precedence over magic words.
+                Some users report quality changes since automatic thinking was introduced.
+                Track the discussion at <a href="https://github.com/anthropics/claude-code/issues/19098" target="_blank">GitHub Issue #19098</a>.
               </div>
             </div>
           </div>
@@ -690,6 +697,109 @@ Only report significant issues.
         </div>
       </div>
 
+      <!-- Task Tools -->
+      <div class="accordion" id="task-tools" data-searchable>
+        <div class="accordion-header">
+          <div class="accordion-icon">✅</div>
+          <div class="accordion-title-group">
+            <div class="accordion-title">Task Tools</div>
+            <div class="accordion-subtitle">Track progress with visible task lists</div>
+          </div>
+          <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p class="feature-text">
+              Task Tools allow Claude to create and manage visible task lists in the terminal.
+              Track progress, show dependencies, and display real-time status with animated spinners.
+            </p>
+
+            <div class="hierarchy-section">
+              <h3 class="hierarchy-title">Available Tools</h3>
+              <table class="hierarchy-table">
+                <thead>
+                  <tr>
+                    <th>Tool</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="command-tag">TaskCreate</span></td>
+                    <td>Create a new task with subject, description, activeForm</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag">TaskUpdate</span></td>
+                    <td>Update status (pending → in_progress → completed)</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag">TaskList</span></td>
+                    <td>List all tasks with their current status</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag">TaskGet</span></td>
+                    <td>Get details of a specific task</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="code-block" data-label="TASK WITH ACTIVE FORM">
+<span class="code-comment"># Create task with spinner text</span>
+TaskCreate({
+  subject: "Build release",
+  description: "Build, sign and notarize",
+  <span class="code-keyword">activeForm</span>: "Building release..."  <span class="code-comment"># Shows in spinner</span>
+})
+            </div>
+
+            <div class="hierarchy-section">
+              <h3 class="hierarchy-title">Task Dependencies</h3>
+              <table class="hierarchy-table">
+                <thead>
+                  <tr>
+                    <th>Parameter</th>
+                    <th>Usage</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="command-tag">blockedBy</span></td>
+                    <td>Task IDs that must complete first</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag">addBlockedBy</span></td>
+                    <td>Add dependencies to existing task</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="code-block" data-label="TASK DEPENDENCIES">
+<span class="code-comment"># Task 2 waits for Task 1</span>
+TaskUpdate({
+  taskId: "2",
+  <span class="code-keyword">addBlockedBy</span>: ["1"]
+})
+
+<span class="code-comment"># Result in terminal:</span>
+✓ #1 Create Issue
+● #2 Implement <span class="code-comment"># (in_progress with spinner)</span>
+☐ #3 Open PR [blocked by #2]
+            </div>
+
+            <div class="info-box">
+              <div class="info-box-title">💡 When to Use Tasks</div>
+              <div class="info-box-content">
+                Use tasks for multi-step workflows (3+ steps). For simple tasks, Claude can work directly without task tracking. Ask Claude to "create tasks for this workflow" to enable tracking.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- MCP Servers -->
       <div class="accordion" id="mcp-servers" data-searchable>
         <div class="accordion-header">
@@ -760,6 +870,87 @@ Only report significant issues.
               <div class="info-box-title">📚 Learn More</div>
               <div class="info-box-content">
                 Find more MCP servers at <code>github.com/modelcontextprotocol/servers</code>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Serena MCP -->
+      <div class="accordion" id="serena-mcp" data-searchable>
+        <div class="accordion-header">
+          <div class="accordion-icon">🔮</div>
+          <div class="accordion-title-group">
+            <div class="accordion-title">Serena MCP</div>
+            <div class="accordion-subtitle">Semantic code navigation and memories</div>
+          </div>
+          <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p class="feature-text">
+              Serena is an MCP server that provides semantic code understanding through LSP integration.
+              It enables symbol-level navigation, intelligent editing, and persistent project memories.
+            </p>
+
+            <div class="hierarchy-section">
+              <h3 class="hierarchy-title">Key Features</h3>
+              <table class="hierarchy-table">
+                <thead>
+                  <tr>
+                    <th>Feature</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="command-tag">Symbolic Tools</span></td>
+                    <td>find_symbol, replace_symbol_body, rename_symbol</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag">Memories</span></td>
+                    <td>Persistent context stored in .serena/memories/</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag">References</span></td>
+                    <td>Find all usages of a symbol across codebase</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag">Multi-language</span></td>
+                    <td>TypeScript, Python, Swift, Go, and more</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="code-block" data-label="MEMORY TOOLS">
+<span class="code-comment"># Read a memory</span>
+read_memory("project_overview")
+
+<span class="code-comment"># Write a memory (persists between sessions)</span>
+write_memory("current_work", "Working on feature X...")
+
+<span class="code-comment"># List available memories</span>
+list_memories()
+            </div>
+
+            <div class="code-block" data-label="SYMBOLIC EDITING">
+<span class="code-comment"># Find a symbol by name pattern</span>
+find_symbol("MyClass/myMethod", include_body=True)
+
+<span class="code-comment"># Replace entire symbol body</span>
+replace_symbol_body("MyClass/myMethod", "func myMethod() { ... }")
+
+<span class="code-comment"># Rename across codebase</span>
+rename_symbol("oldName", "newName")
+            </div>
+
+            <div class="info-box">
+              <div class="info-box-title">💡 Memories Persist</div>
+              <div class="info-box-content">
+                Memories stored in <code>.serena/memories/</code> survive between sessions. Use them for project context, current work status, and team conventions.
               </div>
             </div>
           </div>
@@ -1709,6 +1900,201 @@ claude <span class="code-flag">-c</span>
         </div>
       </div>
 
+      <!-- Custom Skills -->
+      <div class="accordion" id="custom-skills" data-searchable>
+        <div class="accordion-header">
+          <div class="accordion-icon">⚡</div>
+          <div class="accordion-title-group">
+            <div class="accordion-title">Custom Skills</div>
+            <div class="accordion-subtitle">Complex reusable prompts with /skill-name</div>
+          </div>
+          <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p class="feature-text">
+              Skills are more powerful than custom commands. They can include multi-step instructions,
+              trigger specific behaviors, and create complete workflows invoked with a simple <code>/skill-name</code>.
+            </p>
+
+            <div class="code-block" data-label="~/.claude/skills.json">
+{
+  <span class="code-string">"workflow"</span>: {
+    <span class="code-string">"description"</span>: <span class="code-string">"Full development workflow"</span>,
+    <span class="code-string">"prompt"</span>: <span class="code-string">"Execute the development workflow:\n1. Create tasks for all steps\n2. Create GitHub issue\n3. Implement with feature branch\n4. Open PR\n5. Wait for tests\n6. Release"</span>
+  },
+  <span class="code-string">"review"</span>: {
+    <span class="code-string">"description"</span>: <span class="code-string">"Code review current changes"</span>,
+    <span class="code-string">"prompt"</span>: <span class="code-string">"Review staged changes for bugs, security issues, and style"</span>
+  }
+}
+            </div>
+
+            <div class="hierarchy-section">
+              <h3 class="hierarchy-title">Skills vs Commands</h3>
+              <table class="hierarchy-table">
+                <thead>
+                  <tr>
+                    <th>Aspect</th>
+                    <th>Custom Commands</th>
+                    <th>Custom Skills</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Location</td>
+                    <td><code>settings.json</code></td>
+                    <td><code>skills.json</code></td>
+                  </tr>
+                  <tr>
+                    <td>Complexity</td>
+                    <td>Simple text expansion</td>
+                    <td>Multi-step workflows</td>
+                  </tr>
+                  <tr>
+                    <td>Description</td>
+                    <td>Not shown</td>
+                    <td>Shown in help</td>
+                  </tr>
+                  <tr>
+                    <td>Best For</td>
+                    <td>Quick shortcuts</td>
+                    <td>Complex processes</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="code-block" data-label="USAGE">
+<span class="code-comment"># Invoke a skill</span>
+/workflow Fix authentication bug
+
+<span class="code-comment"># Skill expands to full prompt and executes</span>
+            </div>
+
+            <div class="info-box">
+              <div class="info-box-title">💡 Restart Required</div>
+              <div class="info-box-content">
+                After creating or modifying <code>~/.claude/skills.json</code>, restart Claude Code for changes to take effect.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Plan Mode -->
+      <div class="accordion" id="plan-mode" data-searchable>
+        <div class="accordion-header">
+          <div class="accordion-icon">📋</div>
+          <div class="accordion-title-group">
+            <div class="accordion-title">Plan Mode</div>
+            <div class="accordion-subtitle">Design before implementing</div>
+          </div>
+          <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p class="feature-text">
+              Plan Mode lets Claude explore the codebase and design an implementation approach before writing code.
+              Perfect for complex tasks where you want to review the strategy first.
+            </p>
+
+            <div class="hierarchy-section">
+              <h3 class="hierarchy-title">Plan Mode Tools</h3>
+              <table class="hierarchy-table">
+                <thead>
+                  <tr>
+                    <th>Tool</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="command-tag">EnterPlanMode</span></td>
+                    <td>Start planning (read-only, no edits)</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag">ExitPlanMode</span></td>
+                    <td>Request approval and start implementing</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="hierarchy-section">
+              <h3 class="hierarchy-title">Planning Phases</h3>
+              <table class="hierarchy-table">
+                <thead>
+                  <tr>
+                    <th>Phase</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="command-tag purple">1. Explore</span></td>
+                    <td>Launch Explore agents to understand codebase</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag purple">2. Design</span></td>
+                    <td>Launch Plan agents for implementation strategy</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag purple">3. Review</span></td>
+                    <td>Read critical files, clarify questions</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag purple">4. Write Plan</span></td>
+                    <td>Document approach in plan file</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag purple">5. Approve</span></td>
+                    <td>User approves, Claude implements</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="usage-grid">
+              <div class="usage-card positive">
+                <div class="usage-card-header">
+                  <div class="usage-icon">✓</div>
+                  When to Use
+                </div>
+                <ul class="usage-list">
+                  <li>New feature implementation</li>
+                  <li>Multiple valid approaches exist</li>
+                  <li>Architectural decisions needed</li>
+                  <li>Multi-file changes</li>
+                </ul>
+              </div>
+              <div class="usage-card negative">
+                <div class="usage-card-header">
+                  <div class="usage-icon">✗</div>
+                  When to Skip
+                </div>
+                <ul class="usage-list">
+                  <li>Simple bug fixes</li>
+                  <li>Single-line changes</li>
+                  <li>User gave specific instructions</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="info-box">
+              <div class="info-box-title">💡 Triggering Plan Mode</div>
+              <div class="info-box-content">
+                Ask Claude to "plan this before implementing" or use <code>EnterPlanMode</code> tool. Claude can also proactively enter plan mode for complex tasks.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Multi-file Editing -->
       <div class="accordion" id="multi-file" data-searchable>
         <div class="accordion-header">
@@ -1871,6 +2257,135 @@ claude <span class="code-flag">-c</span>
               <div class="info-box-content">
                 The more context and specificity you provide, the better Claude's response will be. Treat it like explaining to a skilled colleague who just joined your project.
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Workflow Patterns -->
+      <div class="accordion" id="workflow-patterns" data-searchable>
+        <div class="accordion-header">
+          <div class="accordion-icon">🔄</div>
+          <div class="accordion-title-group">
+            <div class="accordion-title">Workflow Patterns</div>
+            <div class="accordion-subtitle">Combine tools for powerful workflows</div>
+          </div>
+          <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </div>
+        <div class="accordion-content">
+          <div class="accordion-body">
+            <p class="feature-text">
+              Combine Tasks, Agents, Plan Mode, and Background operations to create powerful development workflows.
+            </p>
+
+            <div class="hierarchy-section">
+              <h3 class="hierarchy-title">Development Workflow</h3>
+              <table class="hierarchy-table">
+                <thead>
+                  <tr>
+                    <th>Step</th>
+                    <th>Description</th>
+                    <th>Tools Used</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="command-tag purple">1</span></td>
+                    <td>Create GitHub Issue</td>
+                    <td>gh CLI</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag purple">2</span></td>
+                    <td>Plan implementation</td>
+                    <td>Plan Mode, Explore agents</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag purple">3</span></td>
+                    <td>Implement changes</td>
+                    <td>Edit tools, git</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag purple">4</span></td>
+                    <td>Open Pull Request</td>
+                    <td>gh CLI</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag purple">5</span></td>
+                    <td>Test (user action)</td>
+                    <td>TaskUpdate (wait)</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag purple">6</span></td>
+                    <td>Merge PR</td>
+                    <td>gh CLI</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag purple">7</span></td>
+                    <td>Wait for CI</td>
+                    <td>Background task</td>
+                  </tr>
+                  <tr>
+                    <td><span class="command-tag purple">8</span></td>
+                    <td>Release</td>
+                    <td>Build scripts, gh CLI</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="info-box" style="background: #d4edda; border-color: #28a745;">
+              <div class="info-box-title">💡 Skip Release For</div>
+              <div class="info-box-content">
+                <ul style="margin: 0; padding-left: 1.5rem;">
+                  <li>Documentation changes (docs/, README)</li>
+                  <li>Config/memory changes (.serena/, .github/)</li>
+                  <li>Non-code changes that don't affect the binary</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="code-block" data-label="TRIGGER WORKFLOW">
+<span class="code-comment"># Ask Claude to use the workflow</span>
+"Create tasks and follow the development workflow to implement feature X"
+
+<span class="code-comment"># Or with a custom skill</span>
+/workflow Implement user authentication
+            </div>
+
+            <div class="hierarchy-section">
+              <h3 class="hierarchy-title">Combining Tools</h3>
+              <table class="hierarchy-table">
+                <thead>
+                  <tr>
+                    <th>Combination</th>
+                    <th>Use Case</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Tasks + blockedBy</td>
+                    <td>Sequential workflow with dependencies</td>
+                  </tr>
+                  <tr>
+                    <td>Parallel Agents</td>
+                    <td>Explore multiple codepaths simultaneously</td>
+                  </tr>
+                  <tr>
+                    <td>Background + Tasks</td>
+                    <td>Long builds without blocking conversation</td>
+                  </tr>
+                  <tr>
+                    <td>Plan Mode + Tasks</td>
+                    <td>Get approval before executing workflow</td>
+                  </tr>
+                  <tr>
+                    <td>Memories + Workflow</td>
+                    <td>Persist workflow patterns between sessions</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
